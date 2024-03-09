@@ -1,0 +1,5 @@
+node_modules/
+mongo/
+package-lock.json
+.env
+api.http
