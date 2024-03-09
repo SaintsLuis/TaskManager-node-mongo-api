@@ -4,9 +4,9 @@ Una API RESTful para la gestión de libros, construida con Node.js, Express y Mo
 
 ## Instalación
 
-1. Clona el repositorio: `git clone https://github.com/yourusername/book-management-api.git`
+1. Clona el repositorio: `git clone https://github.com/SaintsLuis/node_api_rest_mongo.git`
 2. Instala las dependencias: `npm install`
-3. Inicia el servidor: `npm start`
+3. Inicia el servidor: `npm run dev`
 
 ## Uso
 
