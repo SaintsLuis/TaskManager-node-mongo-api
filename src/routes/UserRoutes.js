@@ -1,21 +1,28 @@
 const express = require('express')
-const UserController = require('../controllers/UserControllers')
+const AuthMiddleware = require('../middlewares/AuthMiddleware')
 const UserMiddleware = require('../middlewares/UserMiddleware')
+const UserController = require('../controllers/UserControllers')
+const {
+  validateCreateUser,
+  validateUpdateUser,
+  validateLoginUser,
+  validateUserId,
+} = require('../utils/validations')
 const router = express.Router()
 
 // Obtener todos los usuarios [GET]
 router.get('/', UserController.getAllUser)
 
 // Crear un usuario [POST]
-router.post('/', UserController.createUser)
+router.post('/', validateCreateUser, UserController.createUser)
 
 // Iniciar sesión [POST]
-router.post('/login', UserController.loginUser)
+router.post('/login', validateLoginUser, UserController.loginUser)
 
 // Obtener un usuario por su id [GET]
 router.get(
   '/:id',
-  UserMiddleware.authenticate,
+  AuthMiddleware.authenticate,
   UserMiddleware.findUser,
   UserController.getUserById
 )
@@ -23,7 +30,8 @@ router.get(
 // Actualizar parcial un usuario [PATCH]
 router.patch(
   '/:id',
-  UserMiddleware.authenticate,
+  validateUpdateUser,
+  AuthMiddleware.authenticate,
   UserMiddleware.findUser,
   UserController.updateUserPartial
 )
@@ -31,7 +39,8 @@ router.patch(
 // Actualizar completo un usuario [PUT]
 router.put(
   '/:id',
-  UserMiddleware.authenticate,
+  validateUpdateUser,
+  AuthMiddleware.authenticate,
   UserMiddleware.findUser,
   UserController.updateUserComplete
 )
@@ -39,7 +48,8 @@ router.put(
 // Eliminar un usuario [DELETE]
 router.delete(
   '/:id',
-  UserMiddleware.authenticate,
+  validateUserId,
+  AuthMiddleware.authenticate,
   UserMiddleware.findUser,
   UserController.deleteUser
 )

@@ -1,8 +1,7 @@
 const User = require('../models/UserModel')
-const UserMiddleware = require('../middlewares/UserMiddleware')
-const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv')
+const { validationResult } = require('express-validator')
 dotenv.config()
 
 // Iniciar sesión [POST]
@@ -40,12 +39,13 @@ exports.getUserById = async (req, res) => {
 
 // Crear un usuario [POST]
 exports.createUser = async (req, res) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() })
+  }
+
   try {
     const { name, email, password } = req.body
-
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: 'Missing required fields' })
-    }
 
     // Verificar si el correo electrónico ya está en uso
     const existingUser = await User.findOne({ email })
@@ -69,6 +69,11 @@ exports.createUser = async (req, res) => {
 
 // Actualizar parcial un usuario [PATCH]
 exports.updateUserPartial = async (req, res) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() })
+  }
+
   // Extraer el ID del usuario del token
   const userIdFromToken = req.user._id
 
@@ -90,6 +95,11 @@ exports.updateUserPartial = async (req, res) => {
 
 // Actualizar un usuario COMPLETO [PUT]
 exports.updateUserComplete = async (req, res) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() })
+  }
+
   // Extraer el ID del usuario del token
   const userIdFromToken = req.user._id
 
@@ -99,12 +109,6 @@ exports.updateUserComplete = async (req, res) => {
   // Verificar si el usuario que hace la petición es el mismo que se quiere actualizar
   if (userIdFromToken.toString() !== userIdFromRoute) {
     return res.status(403).json({ message: 'Forbidden' })
-  }
-
-  const { name, email, password } = req.body
-
-  if (!name || !email || !password) {
-    return res.status(400).json({ message: 'Missing required fields' })
   }
 
   try {
