@@ -1,6 +1,6 @@
 ## Task Manager
 
-Task Manager is a simple yet functional CRUD (Create, Read, Update, Delete) application built with Node.js, Express, and MongoDB. The application features user registration and login functionality, secured with JWT authentication. Users can perform CRUD operations on their tasks. This project serves as a great starting point for anyone looking to understand how to implement basic CRUD operations and authentication in a Node.js application.
+Task Manager is a simple yet functional CRUD (Create, Read, Update, Delete) API built with Node.js, Express, and MongoDB. The application features user registration and login functionality, secured with JWT authentication. Users can perform CRUD operations on their tasks.
 
 ## Features
 
@@ -22,7 +22,7 @@ Task Manager is a simple yet functional CRUD (Create, Read, Update, Delete) appl
 ## Installation
 
 1. Clone this repository:
-   https://github.com/SaintsLuis/node_api_rest_mongo.git
+   https://github.com/SaintsLuis/TaskManager-node-mongo-api.git
 
 2. Install the dependencies:
    npm install
