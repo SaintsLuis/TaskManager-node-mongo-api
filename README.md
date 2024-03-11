@@ -1,11 +1,23 @@
-# T
+## Task Manager
 
-This repository contains a simple yet functional CRUD (Create, Read, Update, Delete) application built with Node.js, Express, and MongoDB. The application features user registration and login functionality, secured with JWT authentication. Users can perform CRUD operations on their data. This project serves as a great starting point for anyone looking to understand how to implement basic CRUD operations and authentication in a Node.js application.
+Task Manager is a simple yet functional CRUD (Create, Read, Update, Delete) application built with Node.js, Express, and MongoDB. The application features user registration and login functionality, secured with JWT authentication. Users can perform CRUD operations on their tasks. This project serves as a great starting point for anyone looking to understand how to implement basic CRUD operations and authentication in a Node.js application.
 
 ## Features
 
 - User registration and login with JWT authentication
-- CRUD operations for users
+- CRUD operations for tasks
+
+## Technologies Used
+
+✅ Node.js: A JavaScript runtime built on Chrome's V8 JavaScript engine.
+
+✅ Express: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+
+✅ MongoDB: A source-available cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas.
+
+✅ Mongoose: An Object Data Modeling (ODM) library for MongoDB and Node.js. It manages relationships between data, provides schema validation, and is used to translate between objects in code and the representation of those objects in MongoDB.
+
+✅ JWT (JSON Web Tokens): A compact, URL-safe means of representing claims to be transferred between two parties. Used for securely transmitting information between parties as a JSON object.
 
 ## Installation
 
@@ -21,6 +33,10 @@ This repository contains a simple yet functional CRUD (Create, Read, Update, Del
 
 4. Start the server:
    npm run dev
+
+## Author
+
+Luis M Santos
 
 ## License
 
